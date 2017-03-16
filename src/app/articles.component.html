@@ -1,0 +1,15 @@
+<div class="articles">
+  <h1>{{title}}</h1>
+  <li *ngFor="let art of articles" 
+      [class.selected]="art === selected_article"
+      (click)="onSelect(art)">
+    <div class="badge"><label>id: </label>{{art.id}}</div>
+    {{art.title}} details!
+  </li>
+</div>
+<div *ngIf="selected_article">
+  <h2>
+    {{selected_article.title | uppercase}} is your chosen one
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
