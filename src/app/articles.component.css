@@ -1,3 +1,7 @@
+div.app-content { margin-top: 56px; }
+md-card { margin: 5%; }
+
+
   .selected {
   background-color: #CFD8DC !important;
   color: white;

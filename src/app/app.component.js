@@ -18,7 +18,7 @@ var AppComponent = (function () {
             selector: 'my-app',
             moduleId: module.id,
             templateUrl: './app.component.html',
-            styles: ["\n    a { font-size: 90%; }\n    nav { display:flex; align-items:center; }\n    md-toolbar { top:0; position: fixed; z-index: 100; }\n    .site-title { font-size: 120%; font-weight: bold; }\n  "]
+            styleUrls: ["./app.component.css"]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

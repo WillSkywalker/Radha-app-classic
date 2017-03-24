@@ -7,3 +7,6 @@ body {
     margin: 0px;
     background-color: #fafafa;
 }
+* {
+  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+}

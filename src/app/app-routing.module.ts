@@ -15,8 +15,12 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'arts/:cat',
+    component: ArticlesComponent,
+  },
+  {
     path: 'arts',
-    component: ArticlesComponent
+    component: ArticlesComponent,
   },
   {
     path: 'dashboard',

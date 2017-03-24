@@ -21,8 +21,12 @@ var routes = [
         pathMatch: 'full'
     },
     {
+        path: 'arts/:cat',
+        component: articles_component_1.ArticlesComponent,
+    },
+    {
         path: 'arts',
-        component: articles_component_1.ArticlesComponent
+        component: articles_component_1.ArticlesComponent,
     },
     {
         path: 'dashboard',
