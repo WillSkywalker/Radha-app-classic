@@ -1,0 +1,14 @@
+div.app-content { margin-top: 60px; }
+md-card { 
+    margin-top: 2%; 
+    margin-left: 5%; 
+    margin-right: 5%; 
+}
+md-card-title { font-size: 30px !important; width: 100%;}
+md-card-subtitle { color: rgba(0,0,0,.54); }
+md-card-header { height: 64px; }
+p.detail { 
+    font-size: 18px;
+    line-height: 24px; 
+    font-family: Georgia;
+}

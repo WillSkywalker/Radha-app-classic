@@ -6,10 +6,9 @@
   <md-list>
   <!-- <h1>{{title}}</h1> -->
   <md-list-item md-line *ngFor="let art of articles" 
-      [class.selected]="art === selected_article"
-      (click)="onSelect(art)">
-    <h4>{{art.title}}</h4><br/>
-    <p>{{art.chinese_title}}</p>
+      [routerLink]="['/read', art.id]">
+    <h4 class="eng-title">{{art.title}}&nbsp;|&nbsp; </h4><br/>
+    <p class="chn-title"> {{art.chinese_title}}</p>
   </md-list-item>
 <div *ngIf="selected_article">
   <h2>

@@ -11,7 +11,8 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   moduleId: module.id,
   selector: 'my-art-detail',
-  templateUrl: './art-detail.component.html'
+  templateUrl: './art-detail.component.html',
+  styleUrls: ['./art-detail.component.css']
 })
 export class ArtDetailComponent implements OnInit {
 

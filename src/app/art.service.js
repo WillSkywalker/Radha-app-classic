@@ -56,6 +56,10 @@ var ArticleService = (function () {
         return this.getArticles()
             .then(function (articles) { return articles.find(function (art) { return art.id === id; }); });
     };
+    ArticleService.prototype.getArticlePreview = function (id) {
+        return this.getArticles()
+            .then(function (articles) { return articles.find(function (art) { return art.id === id; }); });
+    };
     ArticleService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

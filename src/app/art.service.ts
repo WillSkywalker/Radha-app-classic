@@ -58,4 +58,9 @@ export class ArticleService {
     return this.getArticles()
       .then(articles => articles.find(art => art.id === id));
   }
+
+  getArticlePreview(id: number): Promise<Article> {
+    return this.getArticles()
+      .then(articles => articles.find(art => art.id === id));
+  }
 }

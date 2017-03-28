@@ -37,7 +37,8 @@ var ArtDetailComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'my-art-detail',
-            templateUrl: './art-detail.component.html'
+            templateUrl: './art-detail.component.html',
+            styleUrls: ['./art-detail.component.css']
         }), 
         __metadata('design:paramtypes', [art_service_1.ArticleService, router_1.ActivatedRoute, common_1.Location])
     ], ArtDetailComponent);
