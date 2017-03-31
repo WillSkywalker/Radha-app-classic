@@ -21,7 +21,12 @@
 </md-chip-list>
 </md-card>
 <md-card>
-<p class="detail" *ngFor="let para of art.content; let i = index;" [attr.data-index]="i">{{para}}<br/></p>
+<template #popupExp>Hello, <b>World</b>!</template>
+<p class="detail" *ngFor="let para of art.content; let i = index;" [attr.data-index]="i">
+    <a href="" *ngFor="let word of para.split(' ');" [ngbPopover]="popupExp" triggers="mouseenter:mouseleave">{{word}} </a>
+
+    <br/>
+</p>
 
 <button md-raised-button (click)="goBack()">返回</button>
 <button md-raised-button color="primary" (click)="gotoDetail()">阅读全文</button>

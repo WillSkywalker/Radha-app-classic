@@ -3,6 +3,8 @@ import { MaterialModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppComponent }  from './app.component';
 import { ArtDetailComponent } from './art-detail.component';
 import { ArticlesComponent } from './articles.component';
@@ -22,7 +24,8 @@ import 'hammerjs';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    NgbModule.forRoot()
   ],
   declarations: [ 
     AppComponent,

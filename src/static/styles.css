@@ -10,3 +10,8 @@ body {
 * {
   font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+    color: inherit;
+}
