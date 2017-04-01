@@ -12,6 +12,6 @@ p.detail {
     line-height: 24px; 
     font-family: Georgia;
 }
-a {
-    font-family: inherit;
+span {
+    font-family: inherit; 
 }

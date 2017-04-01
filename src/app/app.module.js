@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var material_1 = require('@angular/material');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
+var http_1 = require('@angular/http');
 var ng_bootstrap_1 = require('@ng-bootstrap/ng-bootstrap');
 var app_component_1 = require('./app.component');
 var art_detail_component_1 = require('./art-detail.component');
@@ -32,6 +33,7 @@ var AppModule = (function () {
                 forms_1.FormsModule,
                 app_routing_module_1.AppRoutingModule,
                 material_1.MaterialModule,
+                http_1.HttpModule,
                 ng_bootstrap_1.NgbModule.forRoot()
             ],
             declarations: [

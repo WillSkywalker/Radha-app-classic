@@ -11,14 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core'); // Remove Input later
 var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
+var http_1 = require('@angular/http');
 var art_1 = require('./art');
 var art_service_1 = require('./art.service');
 require('rxjs/add/operator/switchMap');
+require('rxjs/add/operator/toPromise');
 var ArtDetailComponent = (function () {
-    function ArtDetailComponent(art_service, route, location) {
+    function ArtDetailComponent(art_service, route, location, http) {
         this.art_service = art_service;
         this.route = route;
         this.location = location;
+        this.http = http;
+        this.lookUpApiUrl = 'https://api.shanbay.com/bdc/search/?word=';
     }
     ArtDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,8 +30,20 @@ var ArtDetailComponent = (function () {
             .switchMap(function (params) { return _this.art_service.getArticle(+params['id']); })
             .subscribe(function (art) { return _this.art = art; });
     };
+    ArtDetailComponent.prototype.showPopup = function (word) {
+        this.http.get(this.lookUpApiUrl + word).toPromise()
+            .then(function (res) { return document.getElementsByClassName('popover-content')[0].innerHTML += res.json().definition; })
+            .catch(this.handleError);
+        // document.getElementsByClassName('popover-content')[0].innerHTML+=this.explain;
+        return 'Hello ' + word;
+    };
     ArtDetailComponent.prototype.goBack = function () {
         this.location.back();
+    };
+    // private lookUpWord(): Promise<string> {}
+    ArtDetailComponent.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
     };
     __decorate([
         core_1.Input(), 
@@ -40,7 +56,7 @@ var ArtDetailComponent = (function () {
             templateUrl: './art-detail.component.html',
             styleUrls: ['./art-detail.component.css']
         }), 
-        __metadata('design:paramtypes', [art_service_1.ArticleService, router_1.ActivatedRoute, common_1.Location])
+        __metadata('design:paramtypes', [art_service_1.ArticleService, router_1.ActivatedRoute, common_1.Location, http_1.Http])
     ], ArtDetailComponent);
     return ArtDetailComponent;
 }());
