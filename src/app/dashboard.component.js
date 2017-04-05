@@ -25,7 +25,7 @@ var DashboardComponent = (function () {
         this.selected_article = art;
     };
     DashboardComponent.prototype.gotoDetail = function () {
-        this.router.navigate(['radha/read', this.selected_article.id]);
+        this.router.navigate(['/read', this.selected_article.id]);
     };
     DashboardComponent.prototype.goBack = function () {
         this.selected_article = null;

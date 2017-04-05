@@ -24,7 +24,7 @@ var ArticlesComponent = (function () {
         this.selected_article = art;
     };
     ArticlesComponent.prototype.gotoDetail = function () {
-        this.router.navigate(['radha/read', this.selected_article.id]);
+        this.router.navigate(['/read', this.selected_article.id]);
     };
     ArticlesComponent.prototype.ngOnInit = function () {
         var _this = this;
