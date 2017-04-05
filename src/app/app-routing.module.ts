@@ -11,27 +11,27 @@ import { CategoriesComponent } from './categories.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: 'radha/dashboard',
     pathMatch: 'full'
   },
   {
-    path: 'arts/:cat',
+    path: 'radha/arts/:cat',
     component: ArticlesComponent,
   },
   {
-    path: 'arts',
+    path: 'radha/arts',
     component: ArticlesComponent,
   },
   {
-    path: 'dashboard',
+    path: 'radha/dashboard',
     component: DashboardComponent
   },
   {
-    path: 'categories',
+    path: 'radha/categories',
     component: CategoriesComponent
   },
   {
-    path: 'read/:id',
+    path: 'radha/read/:id',
     component: ArtDetailComponent
   },
 ];

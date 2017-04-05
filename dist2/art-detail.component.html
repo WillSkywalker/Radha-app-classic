@@ -1,0 +1,34 @@
+<!-- <div *ngIf="art">
+<h2>{{art.title}} details!</h2>
+<div><label>id: </label>{{art.id}}</div>
+<div>
+  <label>Name: </label><input [(ngModel)]="art.title" placeholder="Name"/>
+</div>
+<button (click)="goBack()">Back</button>
+</div> -->
+<div class="app-content" *ngIf="art">
+<md-card>
+<md-card-header>
+<md-card-title>
+  {{art.title}}
+</md-card-title>
+<md-card-subtitle>{{art.chinese_title}}</md-card-subtitle>
+</md-card-header>
+
+<md-chip-list>
+<md-chip color="primary" selected="true">{{art.category}}</md-chip>
+<md-chip *ngFor="let tag of art.tags" color="accent" selected="true">{{tag}}</md-chip>
+</md-chip-list>
+</md-card>
+<md-card>
+<p class="detail" *ngFor="let para of art.content; let i = index;" [attr.data-index]="i">
+    <span *ngFor="let word of para.split(' ');" [ngbPopover]="" #p="ngbPopover" on-mouseover="p.open(); showPopup(word);" on-mouseleave="p.close()" triggers="manual">{{word}} </span>
+
+    <br/>
+</p>
+
+<button md-raised-button (click)="goBack()">返回</button>
+<button md-raised-button color="primary" (click)="gotoDetail()">阅读全文</button>
+
+</md-card>
+</div>
