@@ -15,23 +15,23 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '/arts/:cat',
+    path: 'arts/:cat',
     component: ArticlesComponent,
   },
   {
-    path: '/arts',
+    path: 'arts',
     component: ArticlesComponent,
   },
   {
-    path: '/dashboard',
+    path: 'dashboard',
     component: DashboardComponent
   },
   {
-    path: '/categories',
+    path: 'categories',
     component: CategoriesComponent
   },
   {
-    path: '/read/:id',
+    path: 'read/:id',
     component: ArtDetailComponent
   },
 ];

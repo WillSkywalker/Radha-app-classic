@@ -92536,27 +92536,27 @@ var categories_component_1 = require('./categories.component');
 var routes = [
     {
         path: '',
-        redirectTo: 'radha/dashboard',
+        redirectTo: '/dashboard',
         pathMatch: 'full'
     },
     {
-        path: 'radha/arts/:cat',
+        path: 'arts/:cat',
         component: articles_component_1.ArticlesComponent,
     },
     {
-        path: 'radha/arts',
+        path: 'arts',
         component: articles_component_1.ArticlesComponent,
     },
     {
-        path: 'radha/dashboard',
+        path: 'dashboard',
         component: dashboard_component_1.DashboardComponent
     },
     {
-        path: 'radha/categories',
+        path: 'categories',
         component: categories_component_1.CategoriesComponent
     },
     {
-        path: 'radha/read/:id',
+        path: 'read/:id',
         component: art_detail_component_1.ArtDetailComponent
     },
 ];
@@ -92832,7 +92832,7 @@ var ArticlesComponent = (function () {
         this.selected_article = art;
     };
     ArticlesComponent.prototype.gotoDetail = function () {
-        this.router.navigate(['radha/read', this.selected_article.id]);
+        this.router.navigate(['/read', this.selected_article.id]);
     };
     ArticlesComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -92958,7 +92958,7 @@ var DashboardComponent = (function () {
         this.selected_article = art;
     };
     DashboardComponent.prototype.gotoDetail = function () {
-        this.router.navigate(['radha/read', this.selected_article.id]);
+        this.router.navigate(['/read', this.selected_article.id]);
     };
     DashboardComponent.prototype.goBack = function () {
         this.selected_article = null;

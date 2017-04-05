@@ -21,23 +21,23 @@ var routes = [
         pathMatch: 'full'
     },
     {
-        path: '/arts/:cat',
+        path: 'arts/:cat',
         component: articles_component_1.ArticlesComponent,
     },
     {
-        path: '/arts',
+        path: 'arts',
         component: articles_component_1.ArticlesComponent,
     },
     {
-        path: '/dashboard',
+        path: 'dashboard',
         component: dashboard_component_1.DashboardComponent
     },
     {
-        path: '/categories',
+        path: 'categories',
         component: categories_component_1.CategoriesComponent
     },
     {
-        path: '/read/:id',
+        path: 'read/:id',
         component: art_detail_component_1.ArtDetailComponent
     },
 ];
