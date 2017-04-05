@@ -36,7 +36,7 @@ export class ArticlesComponent implements OnInit {
   }
 
   gotoDetail() {
-    this.router.navigate(['radha/read', this.selected_article.id]);
+    this.router.navigate(['/read', this.selected_article.id]);
   }
 
   ngOnInit() {

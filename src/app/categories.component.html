@@ -1,7 +1,7 @@
 <div class="app-content">
 <md-grid-list cols="3">
 <a *ngFor="let cat of categories" >
-  <md-grid-tile class="{{cat[0] | lowercase}} cat-tile" [routerLink]="['radha/arts', cat[0]]">
+  <md-grid-tile class="{{cat[0] | lowercase}} cat-tile" [routerLink]="['/arts', cat[0]]">
   <p>{{ cat[1] }}</p>
   </md-grid-tile>
 </a>

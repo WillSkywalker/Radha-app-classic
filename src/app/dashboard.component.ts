@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   gotoDetail() {
-    this.router.navigate(['radha/read', this.selected_article.id]);
+    this.router.navigate(['/read', this.selected_article.id]);
   }
 
   goBack() {

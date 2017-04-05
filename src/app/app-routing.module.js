@@ -17,27 +17,27 @@ var categories_component_1 = require('./categories.component');
 var routes = [
     {
         path: '',
-        redirectTo: 'radha/dashboard',
+        redirectTo: '/dashboard',
         pathMatch: 'full'
     },
     {
-        path: 'radha/arts/:cat',
+        path: '/arts/:cat',
         component: articles_component_1.ArticlesComponent,
     },
     {
-        path: 'radha/arts',
+        path: '/arts',
         component: articles_component_1.ArticlesComponent,
     },
     {
-        path: 'radha/dashboard',
+        path: '/dashboard',
         component: dashboard_component_1.DashboardComponent
     },
     {
-        path: 'radha/categories',
+        path: '/categories',
         component: categories_component_1.CategoriesComponent
     },
     {
-        path: 'radha/read/:id',
+        path: '/read/:id',
         component: art_detail_component_1.ArtDetailComponent
     },
 ];
