@@ -34,6 +34,7 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 material_1.MaterialModule,
                 http_1.HttpModule,
+                http_1.JsonpModule,
                 ng_bootstrap_1.NgbModule.forRoot()
             ],
             declarations: [

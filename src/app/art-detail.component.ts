@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core'; // Remove Input later
+import { Component, Input, OnInit, Injectable } from '@angular/core'; // Remove Input later
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Jsonp } from '@angular/http';
 
 import { Article } from './art';
 
@@ -16,9 +16,13 @@ import 'rxjs/add/operator/toPromise';
   templateUrl: './art-detail.component.html',
   styleUrls: ['./art-detail.component.css']
 })
+
+@Injectable()
 export class ArtDetailComponent implements OnInit {
 
-  private lookUpApiUrl ='https://api.shanbay.com/bdc/search/?word=';
+  // private lookUpApiUrl ='https://api.shanbay.com/bdc/search/?word=';
+  // private lookUpApiUrl ='http://localhost:5000/api/word/';
+  private lookUpApiUrl ='https://willskywalker.com/api/word/';
   explain: string;
 
   @Input()
@@ -28,7 +32,8 @@ export class ArtDetailComponent implements OnInit {
     private art_service: ArticleService,
     private route: ActivatedRoute,
     private location: Location,
-    private http: Http
+    private http: Http,
+    private jsonp: Jsonp
   ) { }
 
   ngOnInit() {
@@ -39,7 +44,8 @@ export class ArtDetailComponent implements OnInit {
 
   showPopup(word:string) {
     this.http.get(this.lookUpApiUrl+word).toPromise()
-        .then(res => document.getElementsByClassName('popover-content')[0].innerHTML += res.json().definition)
+        // .then(res => document.getElementsByClassName('popover-content')[0].innerHTML += res.json().data.definition)
+        .then(res => this.explain = res.text())
         .catch(this.handleError);
 
     // document.getElementsByClassName('popover-content')[0].innerHTML+=this.explain;

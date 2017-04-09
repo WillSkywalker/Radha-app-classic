@@ -92640,6 +92640,7 @@ var AppModule = (function () {
                 app_routing_module_1.AppRoutingModule,
                 material_1.MaterialModule,
                 http_1.HttpModule,
+                http_1.JsonpModule,
                 ng_bootstrap_1.NgbModule.forRoot()
             ],
             declarations: [
@@ -92680,12 +92681,15 @@ var art_service_1 = require('./art.service');
 require('rxjs/add/operator/switchMap');
 require('rxjs/add/operator/toPromise');
 var ArtDetailComponent = (function () {
-    function ArtDetailComponent(art_service, route, location, http) {
+    function ArtDetailComponent(art_service, route, location, http, jsonp) {
         this.art_service = art_service;
         this.route = route;
         this.location = location;
         this.http = http;
-        this.lookUpApiUrl = 'https://api.shanbay.com/bdc/search/?word=';
+        this.jsonp = jsonp;
+        // private lookUpApiUrl ='https://api.shanbay.com/bdc/search/?word=';
+        // private lookUpApiUrl ='http://localhost:5000/api/word/';
+        this.lookUpApiUrl = 'https://willskywalker.com/api/word/';
     }
     ArtDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -92694,8 +92698,9 @@ var ArtDetailComponent = (function () {
             .subscribe(function (art) { return _this.art = art; });
     };
     ArtDetailComponent.prototype.showPopup = function (word) {
+        var _this = this;
         this.http.get(this.lookUpApiUrl + word).toPromise()
-            .then(function (res) { return document.getElementsByClassName('popover-content')[0].innerHTML += res.json().definition; })
+            .then(function (res) { return _this.explain = res.text(); })
             .catch(this.handleError);
         // document.getElementsByClassName('popover-content')[0].innerHTML+=this.explain;
         return 'Hello ' + word;
@@ -92718,8 +92723,9 @@ var ArtDetailComponent = (function () {
             selector: 'my-art-detail',
             templateUrl: './art-detail.component.html',
             styleUrls: ['./art-detail.component.css']
-        }), 
-        __metadata('design:paramtypes', [art_service_1.ArticleService, router_1.ActivatedRoute, common_1.Location, http_1.Http])
+        }),
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [art_service_1.ArticleService, router_1.ActivatedRoute, common_1.Location, http_1.Http, http_1.Jsonp])
     ], ArtDetailComponent);
     return ArtDetailComponent;
 }());

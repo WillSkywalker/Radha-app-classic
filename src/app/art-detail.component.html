@@ -21,8 +21,9 @@
 </md-chip-list>
 </md-card>
 <md-card>
+<template #popContent>{{explain}}</template>
 <p class="detail" *ngFor="let para of art.content; let i = index;" [attr.data-index]="i">
-    <span *ngFor="let word of para.split(' ');" [ngbPopover]="" #p="ngbPopover" on-mouseover="p.open(); showPopup(word);" on-mouseleave="p.close()" triggers="manual">{{word}} </span>
+    <span *ngFor="let word of para.split(' ');" [ngbPopover]="popContent" #p="ngbPopover" on-mouseover="p.open(); showPopup(word);" on-mouseleave="p.close(); explain = '';" triggers="manual">{{word}} </span>
 
     <br/>
 </p>
