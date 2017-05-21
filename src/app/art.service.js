@@ -9,12 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
 var ARTICLES = [
-    { id: 1, title: 'The Specimen', chinese_title: '稻草人', content: ['None'], category: 'Anal', translation: [], tags: ['t', 'r1'] },
-    { id: 2, title: 'The Specimen 2', chinese_title: '稻草人2', content: ['more'], translation: [], category: 'BDSM', tags: ['t', 'r'] },
-    { id: 3, title: 'The Specimen 3', chinese_title: '稻草人3', content: ['better'], translation: [], category: 'Romance', tags: ['dfst', 'r'] },
-    { id: 4, title: 'The Specimen 4', chinese_title: '稻草人4', content: ['fuck'], translation: [], category: 'Gay Male', tags: ['t', 'r'] },
-    { id: 5, title: 'The Specimen 5', chinese_title: '稻草人5', content: ['you'], translation: [], category: 'NonHuman', tags: ['t123', 'r'] },
+    { id: 1, title: 'The Specimen', chinese_title: '稻草人', content: ['None'], category: 'Anal', translation: [], tags: ['t', 'r1'], viewcount: 0, url: '' },
+    { id: 2, title: 'The Specimen 2', chinese_title: '稻草人2', content: ['more'], translation: [], category: 'BDSM', tags: ['t', 'r'], viewcount: 0, url: '' },
+    { id: 3, title: 'The Specimen 3', chinese_title: '稻草人3', content: ['better'], translation: [], category: 'Romance', tags: ['dfst', 'r'], viewcount: 0, url: '' },
+    { id: 4, title: 'The Specimen 4', chinese_title: '稻草人4', content: ['fuck'], translation: [], category: 'Gay Male', tags: ['t', 'r'], viewcount: 0, url: '' },
+    { id: 5, title: 'The Specimen 5', chinese_title: '稻草人5', content: ['you'], translation: [], category: 'NonHuman', tags: ['t123', 'r'], viewcount: 0, url: '' },
     { id: 7, title: 'Breeding Time at the Hucow Farm Ch. 05', chinese_title: '奶牛农场5', content: [
             'Rachel',
             "'Ugh,' I groaned as I blinked my eyes against the glaring morning light that pierced its way through the crack in the window shades. My head must have been replaced with a thorn bush during the night for how it ached in so many places. Every nerve seemed like a dagger stabbing into me. ",
@@ -31,14 +33,20 @@ var ARTICLES = [
         ],
         translation: [],
         category: 'NonConsent/Reluctance',
-        tags: ['t', 'r']
+        tags: ['t', 'r'],
+        viewcount: 0, url: ''
     }
 ];
 var ArticleService = (function () {
-    function ArticleService() {
+    function ArticleService(http) {
+        this.http = http;
+        // private ApiUrl ='https://willskywalker.com/api/';
+        this.ApiUrl = 'http://127.0.0.1:5000/api/';
     }
     ArticleService.prototype.getArticles = function () {
-        return Promise.resolve(ARTICLES);
+        return this.http.get(this.ApiUrl + 'article').toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
     };
     ArticleService.prototype.getRecentArticles = function () {
         return Promise.resolve(ARTICLES.slice(-3).reverse());
@@ -60,9 +68,13 @@ var ArticleService = (function () {
         return this.getArticles()
             .then(function (articles) { return articles.find(function (art) { return art.id === id; }); });
     };
+    ArticleService.prototype.handleError = function (error) {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    };
     ArticleService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], ArticleService);
     return ArticleService;
 }());

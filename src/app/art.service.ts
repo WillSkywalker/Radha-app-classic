@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Article } from './art';
+import { Article, ArticlePre } from './art';
+import { Http, Headers } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 
 
 const ARTICLES: Article[] = [
-  {id: 1, title: 'The Specimen', chinese_title: '稻草人', content: ['None'], category: 'Anal', translation:[], tags: ['t', 'r1']},
-  {id: 2, title: 'The Specimen 2', chinese_title: '稻草人2', content: ['more'], translation:[], category: 'BDSM', tags: ['t', 'r']},
-  {id: 3, title: 'The Specimen 3', chinese_title: '稻草人3', content: ['better'], translation:[], category: 'Romance', tags: ['dfst', 'r']},
-  {id: 4, title: 'The Specimen 4', chinese_title: '稻草人4', content: ['fuck'], translation:[], category: 'Gay Male', tags: ['t', 'r']},
-  {id: 5, title: 'The Specimen 5', chinese_title: '稻草人5', content: ['you'], translation:[], category: 'NonHuman', tags: ['t123', 'r']},
+  {id: 1, title: 'The Specimen', chinese_title: '稻草人', content: ['None'], category: 'Anal', translation:[], tags: ['t', 'r1'], viewcount: 0, url: ''},
+  {id: 2, title: 'The Specimen 2', chinese_title: '稻草人2', content: ['more'], translation:[], category: 'BDSM', tags: ['t', 'r'], viewcount: 0, url: ''},
+  {id: 3, title: 'The Specimen 3', chinese_title: '稻草人3', content: ['better'], translation:[], category: 'Romance', tags: ['dfst', 'r'], viewcount: 0, url: ''},
+  {id: 4, title: 'The Specimen 4', chinese_title: '稻草人4', content: ['fuck'], translation:[], category: 'Gay Male', tags: ['t', 'r'], viewcount: 0, url: ''},
+  {id: 5, title: 'The Specimen 5', chinese_title: '稻草人5', content: ['you'], translation:[], category: 'NonHuman', tags: ['t123', 'r'], viewcount: 0, url: ''},
   {id: 7, title: 'Breeding Time at the Hucow Farm Ch. 05', chinese_title: '奶牛农场5', content: [
     'Rachel', 
     "'Ugh,' I groaned as I blinked my eyes against the glaring morning light that pierced its way through the crack in the window shades. My head must have been replaced with a thorn bush during the night for how it ached in so many places. Every nerve seemed like a dagger stabbing into me. ",
@@ -26,15 +29,25 @@ const ARTICLES: Article[] = [
     ],
     translation:[],
     category: 'NonConsent/Reluctance',
-    tags: ['t', 'r']
+    tags: ['t', 'r'],
+    viewcount: 0, url: ''
   }
 ];
 
 @Injectable()
 export class ArticleService {
 
-  getArticles(): Promise<Article[]> {
-    return Promise.resolve(ARTICLES);
+  // private ApiUrl ='https://willskywalker.com/api/';
+  private ApiUrl ='http://127.0.0.1:5000/api/';
+
+  constructor(private http: Http) { }
+
+  getArticles(): Promise<ArticlePre[]> {
+    return this.http.get(this.ApiUrl+'article').toPromise()
+        // .then(res => document.getElementsByClassName('popover-content')[0].innerHTML += res.json().data.definition)
+        .then(res => res.json() as ArticlePre[])
+        .catch(this.handleError);
+
   }
 
   getRecentArticles(): Promise<Article[]> {
@@ -62,5 +75,10 @@ export class ArticleService {
   getArticlePreview(id: number): Promise<Article> {
     return this.getArticles()
       .then(articles => articles.find(art => art.id === id));
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 }

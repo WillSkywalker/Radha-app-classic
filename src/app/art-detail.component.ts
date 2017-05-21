@@ -3,7 +3,7 @@ import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 import { Http, Headers, Jsonp } from '@angular/http';
 
-import { Article } from './art';
+import { Article, ArticlePre } from './art';
 
 import { ArticleService } from './art.service';
 import 'rxjs/add/operator/switchMap';

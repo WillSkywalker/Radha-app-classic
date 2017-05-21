@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { Article } from './art';
+import { Article, ArticlePre } from './art';
 import { ArticleService } from './art.service';
 
 import 'rxjs/add/operator/switchMap';
@@ -19,9 +19,9 @@ import { Observable } from 'rxjs/Observable';
 
 export class ArticlesComponent implements OnInit {
   title = 'The Specimen';
-  articles: Article[];
+  articles: ArticlePre[];
 
-  selected_article: Article;
+  selected_article: ArticlePre;
   cat: string;
   sorting = 'newest';
 
@@ -31,7 +31,7 @@ export class ArticlesComponent implements OnInit {
     private route: ActivatedRoute) { 
   }
 
-  onSelect(art: Article) {
+  onSelect(art: ArticlePre) {
     this.selected_article = art;
   }
 

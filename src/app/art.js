@@ -5,4 +5,11 @@ var Article = (function () {
     return Article;
 }());
 exports.Article = Article;
+;
+var ArticlePre = (function () {
+    function ArticlePre() {
+    }
+    return ArticlePre;
+}());
+exports.ArticlePre = ArticlePre;
 //# sourceMappingURL=art.js.map

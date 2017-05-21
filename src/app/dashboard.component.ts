@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Article } from './art';
+import { Article, ArticlePre } from './art';
 import { ArticleService } from './art.service';
 
 
@@ -13,7 +13,7 @@ import { ArticleService } from './art.service';
 })
 export class DashboardComponent implements OnInit {
   selected_article: Article;
-  hot_articles: Article[];
+  hot_articles: ArticlePre[];
   recent_articles: Article[];
   random_articles: Article[];
   recommendations: Article[];
@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() {
-    this.art_service.getArticles().then(articles => this.hot_articles = articles.slice(0, 3));
+    this.art_service.getArticles().then(articles => this.hot_articles = articles);
     this.art_service.getRecentArticles().then(articles => this.recent_articles = articles);
   }
 

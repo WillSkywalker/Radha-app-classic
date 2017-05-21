@@ -18,7 +18,7 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.art_service.getArticles().then(function (articles) { return _this.hot_articles = articles.slice(0, 3); });
+        this.art_service.getArticles().then(function (articles) { return _this.hot_articles = articles; });
         this.art_service.getRecentArticles().then(function (articles) { return _this.recent_articles = articles; });
     };
     DashboardComponent.prototype.onSelect = function (art) {
