@@ -61,8 +61,11 @@ var ArticleService = (function () {
         return Promise.resolve(ARTICLES.filter(function (art) { return art.category === category; }).slice(-3).reverse());
     };
     ArticleService.prototype.getArticle = function (id) {
-        return this.getArticles()
-            .then(function (articles) { return articles.find(function (art) { return art.id === id; }); });
+        return this.http.get(this.ApiUrl + 'article/' + id.toString()).toPromise()
+            .then(function (res) { return res.json(); })
+            .catch(this.handleError);
+        // return this.getArticles()
+        //   .then(articles => articles.find(art => art.id === id));
     };
     ArticleService.prototype.getArticlePreview = function (id) {
         return this.getArticles()

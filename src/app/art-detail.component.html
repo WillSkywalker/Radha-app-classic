@@ -22,10 +22,11 @@
 </md-card>
 <md-card>
 <template #popContent>{{explain}}</template>
-<p class="detail" *ngFor="let para of art.content; let i = index;" [attr.data-index]="i">
-    <span *ngFor="let word of para.split(' ');" [ngbPopover]="popContent" #p="ngbPopover" on-mouseover="p.open(); showPopup(word);" on-mouseleave="p.close(); explain = '';" triggers="manual">{{word}} </span>
+<p class="detail" *ngFor="let para of art.content; let i = index;" [attr.data-index]="para[0]">
+    <span *ngFor="let word of para[1].split(' ');" [ngbPopover]="popContent" #p="ngbPopover" on-mouseover="p.open(); showPopup(word);" on-mouseleave="p.close(); explain = '';" triggers="manual">{{word}} </span>
 
     <br/>
+    <span style="display: none" *ngIf="art.translation[i]">{{ art.translation[i][1] }}</span>
 </p>
 
 <button md-raised-button (click)="goBack()">返回</button>

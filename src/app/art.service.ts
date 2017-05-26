@@ -68,8 +68,11 @@ export class ArticleService {
 
 
   getArticle(id: number): Promise<Article> {
-    return this.getArticles()
-      .then(articles => articles.find(art => art.id === id));
+    return this.http.get(this.ApiUrl+'article/'+id.toString()).toPromise()
+        .then(res => res.json() as Article)
+        .catch(this.handleError);
+    // return this.getArticles()
+    //   .then(articles => articles.find(art => art.id === id));
   }
 
   getArticlePreview(id: number): Promise<Article> {
